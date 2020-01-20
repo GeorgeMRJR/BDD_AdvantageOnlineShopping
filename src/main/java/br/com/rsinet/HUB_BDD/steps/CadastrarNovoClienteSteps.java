@@ -28,10 +28,9 @@ public class CadastrarNovoClienteSteps {
 		cadastroPage = PageFactory.initElements(driver, CadastroPage.class);
 	}
 
-	
 	@Dado("^que estou no site advantage online shopping$")
 	public void queEstouNoSiteAdvantageOnlineShopping() {
-	assertEquals("https://www.advantageonlineshopping.com/", homePage.urlAtual());
+		assertEquals("https://www.advantageonlineshopping.com/", homePage.urlAtual());
 	}
 
 	@Dado("^nao estou logado$")

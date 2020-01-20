@@ -1,4 +1,5 @@
 # language: pt
+#@ignore
 Funcionalidade: Cadastro de novo usuario
   
   Usuario deve fazer um cadastro
@@ -10,7 +11,7 @@ Funcionalidade: Cadastro de novo usuario
     E clico no link de criar nova conta
 
   Cenario: Deve preencher todos os campos e efetuar cadastro com sucesso
-    E Digito o nome de usuario "George0000"
+    E Digito o nome de usuario "George000001"
     E Digito a senha "Abc123"
     E Digito a comfirmacao da senha "Abc123"
     E Digito o email "george@test.com"

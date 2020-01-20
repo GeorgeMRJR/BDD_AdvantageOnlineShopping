@@ -1,5 +1,6 @@
 package br.com.rsinet.HUB_BDD.pageObjects;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,16 +15,16 @@ public class HomePage extends BasePage {
 	@FindBy(id = "menuUser")
 	private WebElement iconeUsuario;
 
-	@FindBy(name = "username") // 2
+	@FindBy(name = "username")
 	private WebElement nomeDeUsuario;
 
-	@FindBy(name = "password") // 3
+	@FindBy(name = "password")
 	private WebElement userPassword;
 
-	@FindBy(id = "sign_in_btnundefined") // 4
+	@FindBy(id = "sign_in_btnundefined")
 	private WebElement btnSingIn;
 
-	@FindBy(linkText = "CREATE NEW ACCOUNT") // 5
+	@FindBy(linkText = "CREATE NEW ACCOUNT")
 	private WebElement linkCriarNovaConta;
 
 	@FindBy(id = "speakersTxt")
@@ -49,34 +50,26 @@ public class HomePage extends BasePage {
 		linkCriarNovaConta.sendKeys(Keys.ENTER);
 	}
 
-//	public HomePage clicarSingIN() {//4
-//		driver.findElement(By.id("sign_in_btnundefined")).click();
-//		return this;
-//	}
-
-//	public HomePage fazerLogIn(String UserName, String password) {//6
-//		digitarUserName(UserName);
-//		digitarPassword(password);
-//		clicarSingIN();
-//		return this;
-//	}
-//
-//	public HomePage popupVisivel() {//7
-//		driver.findElement(By.id("//div[@class='PopUp']")).isDisplayed();
-//		return this;
-//
-//	}
-
-//	public CategoriaProdutoPage clicarCategoria(String Categoria) {//8
-//		
-//		WebElement element = driver.findElement(By.xpath("//span[.='"+Categoria+"']"));
-//
-//		JavascriptExecutor executor = (JavascriptExecutor)driver;
-//		executor.executeScript("arguments[0].click();", element);
-//		
-//		return new CategoriaProdutoPage(driver);
-//		
-//		
-//	}
+	public void clicarCategoria(String Categoria) {
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		switch (Categoria) {
+		case "LAPTOPS":
+			executor.executeScript("arguments[0].click();", categoriaLaptops);
+			break;
+		case "MICE":
+			executor.executeScript("arguments[0].click();", categoriaMice);
+			break;
+		case "HEADPHONES":
+			executor.executeScript("arguments[0].click();", categoriaHeadphones);
+			break;
+		case "SPEAKERS":
+			executor.executeScript("arguments[0].click();", categoriaSpeakers);
+			break;
+		case "TABLETS":
+			executor.executeScript("arguments[0].click();", categoriaTablets);
+		default:
+			break;
+		}
+	}
 
 }

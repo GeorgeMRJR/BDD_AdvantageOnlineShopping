@@ -1,6 +1,5 @@
 package br.com.rsinet.HUB_BDD.pageObjects;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,7 +13,7 @@ public class ResultadoDaBuscaPage extends BasePage {
 
 	@FindBy(xpath = "//a[@class='productName ng-binding']")
 	private WebElement produtoLink;
-	
+
 	@FindBy(xpath = "//*[@id=\"searchPage\"]/div[3]/div[1]/div[1]/div[2]/ul[1]/li[1]/p[1]/a[1]")
 	private WebElement resultadoClicavel;
 
