@@ -13,6 +13,12 @@ public class ProdutoPage extends BasePage {
 	@FindBy(xpath = "//h1[@class='roboto-regular screen768 ng-binding']") // 1
 	private WebElement tituloProduto;
 
+	
+	
+	public String nomeDoProduto() {
+		return tituloProduto.getText();
+	}
+	
 //	public String produtoAtualTxt() {//1
 //		String text;
 //		try {

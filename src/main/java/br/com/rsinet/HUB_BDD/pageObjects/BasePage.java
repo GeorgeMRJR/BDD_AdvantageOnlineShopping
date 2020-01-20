@@ -14,11 +14,14 @@ public class BasePage {
 	@FindBy(xpath = "//span[@class='hi-user containMiniTitle ng-binding']")
 	private WebElement logado; // elemento que aparece apenas quando logado
 
-	@FindBy(id = "menuSearch") // 2
+	@FindBy(id = "menuSearch")
 	private WebElement lupa;
 
-	@FindBy(id = "autoComplete") // 3
+	@FindBy(id = "autoComplete")
 	private WebElement campoBusca;
+	
+	@FindBy(xpath = "//p[@class='roboto-regular ng-binding']")
+	private WebElement resultadoBusca;
 
 	public String urlAtual() {
 		return driver.getCurrentUrl();
@@ -34,14 +37,16 @@ public class BasePage {
 		return displayed;
 	}
 
-//	public BasePage clicarLupa() { //2
-//		driver.findElement(By.id("menuSearch")).click();
-//		return this;
-//	}
+	public void clicarLupa() {
+		lupa.click();
+	}
 
-//	public ProdutoPage buscar(String produto) { //3
-//		driver.findElement(By.id("autoComplete")).sendKeys("" + produto + "" + Keys.ENTER);
-//		return new ProdutoPage(driver);
-//	}
+	public void digitarBusca(String produto) {
+		campoBusca.sendKeys("" + produto + "");
+	}
+
+	public String encontrouOResultado() {
+		return resultadoBusca.getText();
+	}
 
 }

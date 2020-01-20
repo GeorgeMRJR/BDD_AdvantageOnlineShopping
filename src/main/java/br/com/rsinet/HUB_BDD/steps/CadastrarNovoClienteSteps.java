@@ -1,13 +1,15 @@
 package br.com.rsinet.HUB_BDD.steps;
 
-import org.junit.Assert;
+import static org.junit.Assert.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
+import br.com.rsinet.HUB_BDD.pageObjects.BasePage;
 import br.com.rsinet.HUB_BDD.pageObjects.CadastroPage;
 import br.com.rsinet.HUB_BDD.pageObjects.HomePage;
 import br.com.rsinet.HUB_BDD.suporte.Web;
 import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.Entao;
 import cucumber.api.java.pt.Quando;
@@ -17,16 +19,25 @@ public class CadastrarNovoClienteSteps {
 	private HomePage homePage;
 	private CadastroPage cadastroPage;
 
-	@Dado("^que estou no site advantage online shopping$")
-	public void queEstouNoSiteAdvantageOnlineShopping() throws Throwable {
+	@Before
+	public void setUp() {
 		driver = Web.inicializarDriver();
+		System.out.println("setup<<<<<<<<<<<<<<<");
 		homePage = PageFactory.initElements(driver, HomePage.class);
+		cadastroPage = PageFactory.initElements(driver, CadastroPage.class);
+	}
+
+	
+	@Dado("^que estou no site advantage online shopping$")
+	public void queEstouNoSiteAdvantageOnlineShopping() {
+	System.out.println(">>>>>>>>>>>>>>>"+homePage.urlAtual());
+	assertEquals("https://www.advantageonlineshopping.com/", homePage.urlAtual());
 	}
 
 	@Dado("^nao estou logado$")
 	public void naoEstouLogado() {
 		boolean logado = homePage.logado();
-		Assert.assertFalse(logado);
+		assertFalse(logado);
 	}
 
 	@Quando("^clico no icone de usuario$")
@@ -37,7 +48,6 @@ public class CadastrarNovoClienteSteps {
 	@Quando("^clico no link de criar nova conta$")
 	public void clicoNoLinkDeCriarNovaConta() {
 		homePage.clicarNovaConta();
-		cadastroPage = PageFactory.initElements(driver, CadastroPage.class);
 	}
 
 	@Quando("^Digito o nome de usuario \"([^\"]*)\"$")
@@ -108,7 +118,7 @@ public class CadastrarNovoClienteSteps {
 	@Entao("^o botao de registrar deve estar abilitado$")
 	public void oBotaoDeRegistrarDeveEstarAbilitado() {
 		boolean registrarAbilitado = cadastroPage.RegistrarAbilitado();
-		Assert.assertTrue(registrarAbilitado);
+		assertTrue(registrarAbilitado);
 	}
 
 	@Quando("^clico no botao de registro$")
@@ -119,13 +129,13 @@ public class CadastrarNovoClienteSteps {
 	@Entao("^o usuario estara cadastrado$")
 	public void oUsuarioEstaraCadastrado() {
 		boolean logado = homePage.logado();
-		Assert.assertTrue(logado);
+		assertTrue(logado);
 	}
-	
+
 	@Entao("^o usuario recebera uma mensagem usuario ja esta cadasttado$")
 	public void oUsuarioReceberaUmaMensagemUsuarioJaEstaCadasttado() throws InterruptedException {
 		String msg = cadastroPage.textoDoErro();
-		Assert.assertEquals("User name already exists", msg);
+		assertEquals("User name already exists", msg);
 	}
 
 	@After
