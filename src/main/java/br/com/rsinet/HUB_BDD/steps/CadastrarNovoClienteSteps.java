@@ -1,10 +1,12 @@
 package br.com.rsinet.HUB_BDD.steps;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-import br.com.rsinet.HUB_BDD.pageObjects.BasePage;
 import br.com.rsinet.HUB_BDD.pageObjects.CadastroPage;
 import br.com.rsinet.HUB_BDD.pageObjects.HomePage;
 import br.com.rsinet.HUB_BDD.suporte.Web;
@@ -22,7 +24,6 @@ public class CadastrarNovoClienteSteps {
 	@Before
 	public void setUp() {
 		driver = Web.inicializarDriver();
-		System.out.println("setup<<<<<<<<<<<<<<<");
 		homePage = PageFactory.initElements(driver, HomePage.class);
 		cadastroPage = PageFactory.initElements(driver, CadastroPage.class);
 	}
@@ -30,7 +31,6 @@ public class CadastrarNovoClienteSteps {
 	
 	@Dado("^que estou no site advantage online shopping$")
 	public void queEstouNoSiteAdvantageOnlineShopping() {
-	System.out.println(">>>>>>>>>>>>>>>"+homePage.urlAtual());
 	assertEquals("https://www.advantageonlineshopping.com/", homePage.urlAtual());
 	}
 

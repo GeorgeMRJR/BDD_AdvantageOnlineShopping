@@ -1,5 +1,6 @@
 package br.com.rsinet.HUB_BDD.pageObjects;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,7 +20,7 @@ public class BasePage {
 
 	@FindBy(id = "autoComplete")
 	private WebElement campoBusca;
-	
+
 	@FindBy(xpath = "//p[@class='roboto-regular ng-binding']")
 	private WebElement resultadoBusca;
 
@@ -41,12 +42,10 @@ public class BasePage {
 		lupa.click();
 	}
 
-	public void digitarBusca(String produto) {
-		campoBusca.sendKeys("" + produto + "");
+	public void Busca(String produto) {
+		campoBusca.sendKeys("" + produto + "" + Keys.ENTER);
 	}
 
-	public String encontrouOResultado() {
-		return resultadoBusca.getText();
-	}
+
 
 }

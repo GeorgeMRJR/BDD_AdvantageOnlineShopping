@@ -12,7 +12,7 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
 		features = "src/main/resources/feature",
 		glue = "br.com.rsinet.HUB_BDD.steps",
-		tags = {"~@ignore"},
+//		tags = {"~@ignore"},
 		plugin = {"pretty","html:target/report-html"},
 		monochrome = true,
 		snippets = SnippetType.CAMELCASE,

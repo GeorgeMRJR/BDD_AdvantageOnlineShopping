@@ -1,5 +1,6 @@
 package br.com.rsinet.HUB_BDD.pageObjects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,6 +19,8 @@ public class ProdutoPage extends BasePage {
 	public String nomeDoProduto() {
 		return tituloProduto.getText();
 	}
+	
+
 	
 //	public String produtoAtualTxt() {//1
 //		String text;
