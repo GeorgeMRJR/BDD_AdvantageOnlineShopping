@@ -125,16 +125,15 @@ public class CadastrarNovoClienteSteps {
 		cadastroPage.ClicarEmRegistrar();
 	}
 
+	@Dado("^o cadastro nao sera realisado$")
+	public void oCadastroNaoSeraRealisado() {
+		assertTrue(homePage.urlAtual().contains("register"));
+	}
+
 	@Entao("^o usuario estara cadastrado$")
 	public void oUsuarioEstaraCadastrado() {
 		boolean logado = homePage.logado();
 		assertTrue(logado);
-	}
-
-	@Entao("^o usuario recebera uma mensagem usuario ja esta cadasttado$")
-	public void oUsuarioReceberaUmaMensagemUsuarioJaEstaCadasttado() throws InterruptedException {
-		String msg = cadastroPage.textoDoErro();
-		assertEquals("User name already exists", msg);
 	}
 
 	@After

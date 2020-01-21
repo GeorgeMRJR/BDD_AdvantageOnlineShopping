@@ -1,5 +1,5 @@
 # language: pt
-#@ignore
+@BuscarUmProdutoPelaHome
 Funcionalidade: Buscar um produto
   
   O usuario buscara um produto pelo campo de busca
@@ -8,10 +8,24 @@ Funcionalidade: Buscar um produto
     Dado que estou no site advantage online shopping
     E o usuario clicou no icone da lupa
 
-  Cenario: buscar um produto pelo campo de busca
-    E digitou no campo de busca "HP USB 3 BUTTON OPTICAL MOUSE" e preciona Enter
-    Entao a pagina do resultado aparecera com o resultado da busca "HP USB 3 BUTTON OPTICAL MOUSE"
+  @TestePositivo
+  Esquema do Cenario: Buscar um produto pelo campo de busca
+    E digitou no campo de busca "<Produto>" e preciona Enter
+    Entao a pagina do resultado aparecera com o resultado da busca "<Produto>"
 
-  Cenario: buscar um inesistente
-    E digitou no campo de busca "iphone" e preciona Enter
-    Entao aparecera uma pagina informando que o produto "iphone" nao foi encontrado
+    Exemplos: produto pelo campo de busca
+      | Produto                       |
+      | HP USB 3 BUTTON OPTICAL MOUSE |
+      | LOGITECH USB HEADSET H390     |
+      | HP STREAM - 11-D020NR LAPTOP  |
+
+  @TesteNegativo
+  Esquema do Cenario: Buscar um inesistente
+    E digitou no campo de busca "<Produto>" e preciona Enter
+    Entao aparecera uma pagina informando que o produto "<Produto>" nao foi encontrado
+
+    Exemplos: Buscar um inesistente
+      | Produto |
+      | iphone  |
+      | Sansung |
+      | Xiaomi  |

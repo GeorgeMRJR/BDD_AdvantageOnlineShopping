@@ -1,5 +1,5 @@
 # language: pt
-#@ignore
+@CadastrarNovoCliente
 Funcionalidade: Cadastro de novo usuario
   
   Usuario deve fazer um cadastro
@@ -10,29 +10,42 @@ Funcionalidade: Cadastro de novo usuario
     Quando clico no icone de usuario
     E clico no link de criar nova conta
 
-  Cenario: Deve preencher todos os campos e efetuar cadastro com sucesso
-    E Digito o nome de usuario "George000001"
-    E Digito a senha "Abc123"
-    E Digito a comfirmacao da senha "Abc123"
-    E Digito o email "george@test.com"
-    E Digito o primeiro nome "George"
-    E Digito o sobre nome "Luiz"
-    E Digito o telefone "989999877"
-    E Seleciono o continente "Brazil"
-    E Digito a cidade "Sorocaba"
-    E Digito o endereco "AV. gal"
-    E Digito o estado "SP"
-    E Digito o codigo postal "18060065"
+  @TestePositivo
+  Esquema do Cenario: Deve preencher todos os campos e efetuar cadastro com sucesso
+    E Digito o nome de usuario "<NomeDeUsuario>"
+    E Digito a senha "<Senha>"
+    E Digito a comfirmacao da senha "<ComfirmaSenha>"
+    E Digito o email "<Email>"
+    E Digito o primeiro nome "<Nome>"
+    E Digito o sobre nome "<SobreNome>"
+    E Digito o telefone "<Telefone>"
+    E Seleciono o continente "<Continente>"
+    E Digito a cidade "<Cidade>"
+    E Digito o endereco "<Endereco>"
+    E Digito o estado "<Estado>"
+    E Digito o codigo postal "<Cep>"
     E clico em aceito os termos de uso
     Entao o botao de registrar deve estar abilitado
     E clico no botao de registro
     Entao o usuario estara cadastrado
 
-  Cenario: Não deve efetuar cadastro de usuario existente
-    E Digito o nome de usuario "George1234"
-    E Digito a senha "Abc123"
-    E Digito a comfirmacao da senha "Abc123"
-    E Digito o email "george@test.com"
+    Exemplos: Deve preencher todos os campos e efetuar cadastro com sucesso
+      | NomeDeUsuario | Senha   | ComfirmaSenha | Email           | Nome   | SobreNome | Telefone  | Continente | Cidade   | Estado | Endereco | Cep      |
+      | George19      | Abc123  | Abc123        | george@test.com | George | Luiz      | 989999899 | Brazil     | Sorocaba | SP     | Av.Gal   | 18060501 |
+      | Joao19        | Abc1236 | Abc1236       | joao@test.com   | joao   | da silva  | 898777877 | Japan      | Tokyo    | Tokyo  | Av.Meiji | 18060501 |
+
+  @TesteNegativo
+  Esquema do Cenario: Nao deve efetuar cadastro de usuario existente
+    E Digito o nome de usuario "<NomeDeUsuario>"
+    E Digito a senha "<Senha>"
+    E Digito a comfirmacao da senha "<ComfirmaSenha>"
+    E Digito o email "<Email>"
     E clico em aceito os termos de uso
     E clico no botao de registro
-    Entao o usuario recebera uma mensagem usuario ja esta cadasttado
+    Entao o cadastro nao sera realisado
+
+    Exemplos: Nao deve efetuar cadastro de usuario existente
+      | NomeDeUsuario | Senha  | ComfirmaSenha | Email           |
+      | George1234    | Abc123 | Abc123        | george@test.com |
+      | George1234    | Abc123 | Abc123        | g               |
+      | George1234    | Abc123 | Abc1234       | george@test.com |

@@ -12,50 +12,56 @@ public class CadastroPage extends BasePage {
 		super(driver);
 	}
 
-	@FindBy(name = "usernameRegisterPage") // 1
+	@FindBy(name = "usernameRegisterPage")
 	private WebElement campoUserName;
 
-	@FindBy(name = "passwordRegisterPage") // 2
+	@FindBy(name = "passwordRegisterPage")
 	private WebElement campoSenha;
 
-	@FindBy(name = "confirm_passwordRegisterPage") // 3
+	@FindBy(name = "confirm_passwordRegisterPage")
 	private WebElement campoReSenha;
 
-	@FindBy(name = "emailRegisterPage") // 4
+	@FindBy(name = "emailRegisterPage")
 	private WebElement campoEmail;
 
-	@FindBy(name = "first_nameRegisterPage") // 5
+	@FindBy(name = "first_nameRegisterPage")
 	private WebElement campoPrimeiroNome;
 
-	@FindBy(name = "last_nameRegisterPage") // 6
+	@FindBy(name = "last_nameRegisterPage")
 	private WebElement campoSobrenome;
 
-	@FindBy(name = "phone_numberRegisterPage") // 7
+	@FindBy(name = "phone_numberRegisterPage")
 	private WebElement campoTelefone;
 
-	@FindBy(name = "countryListboxRegisterPage") // 8
+	@FindBy(name = "countryListboxRegisterPage")
 	private WebElement selectContinente;
 
-	@FindBy(name = "cityRegisterPage") // 9
+	@FindBy(name = "cityRegisterPage")
 	private WebElement campoCidade;
 
-	@FindBy(name = "addressRegisterPage") // 10
+	@FindBy(name = "addressRegisterPage")
 	private WebElement campoEndereco;
 
-	@FindBy(name = "postal_codeRegisterPage") // 11
+	@FindBy(name = "postal_codeRegisterPage")
 	private WebElement campoCodPostal;
 
-	@FindBy(name = "state_/_province_/_regionRegisterPage") // 12
+	@FindBy(name = "state_/_province_/_regionRegisterPage")
 	private WebElement campoEstado;
 
-	@FindBy(name = "i_agree") // 13
+	@FindBy(name = "i_agree")
 	private WebElement checkBox;
 
-	@FindBy(xpath = "//*[@id=\"registerPage\"]/article[1]/sec-form[1]/div[2]/label[1]") // 14
+	@FindBy(xpath = "//*[@id=\"registerPage\"]/article[1]/sec-form[1]/div[2]/label[1]")
 	private WebElement mensagemDeErro;
 
-	@FindBy(id = "register_btnundefined") // 15
+	@FindBy(xpath = "//*[@id=\"formCover\"]/div[1]/div[2]/sec-view[2]/div[1]/label[1]")
+	private WebElement lblErroSenha;
+
+	@FindBy(id = "register_btnundefined")
 	private WebElement btnRegistrar;
+
+	@FindBy(xpath = "//*[@id=\"formCover\"]/div[1]/div[1]/sec-view[2]/div[1]/label[1]")
+	private WebElement lblErroEmail;
 
 	public void digitarUserName(String UserName) {
 		campoUserName.sendKeys(UserName);
@@ -111,7 +117,24 @@ public class CadastroPage extends BasePage {
 
 	public String textoDoErro() throws InterruptedException {
 		Thread.sleep(1000);
-		return mensagemDeErro.getText();
+		String erroBotao = mensagemDeErro.getText();
+		String erroEmail = lblErroEmail.getText();
+		String erroSenha = lblErroSenha.getText();
+		if (erroBotao.length() > 5)
+			return erroBotao;
+		if (erroBotao.length() > 5)
+			return erroEmail;
+		return erroSenha;
+	}
+
+	public String textoDoErroEmail() throws InterruptedException {
+		Thread.sleep(1000);
+		return lblErroEmail.getText();
+	}
+
+	public String textoDoErroSenha() throws InterruptedException {
+		Thread.sleep(1000);
+		return lblErroSenha.getText();
 	}
 
 	public boolean RegistrarAbilitado() {

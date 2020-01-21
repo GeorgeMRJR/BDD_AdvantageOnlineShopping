@@ -1,16 +1,30 @@
 # language: pt
+@AcessarUmProdutoPelaHome
 Funcionalidade: Abrir a pagina de um produto pela categoria na home
   estando na home page o usuario deve clicar em uma categoria e e selecionar um produdo
 
   Contexto: 
     Dado que estou no site advantage online shopping
-    
-    Cenario: 
-    	E clico na categoria "MICE"
-    	Entao deve abrir a pagina da gategoria "MICE"
-    	E clico no produto "Logitech G502 Proteus Core"
-    	Entao aparecera a pagina do produto "Logitech G502 Proteus Core"
-    	
-    	Cenario: 
-    	E clico na categoria "MICE"
-    	Entao deve nao abrir a pagina da gategoria "TABLETS"
+
+  @TestePositivo
+  Esquema do Cenario: 
+    E clico na categoria "<Categoria>"
+    Entao deve abrir a pagina da gategoria "<Categoria>"
+    E clico no produto "<Produto>"
+    Entao aparecera a pagina do produto "<Produto>"
+
+    Exemplos: 
+      | Categoria | Produto                          |
+      | MICE      | Logitech G502 Proteus Core       |
+      | LAPTOPS   | HP Chromebook 14 G1(ENERGY STAR) |
+      | TABLETS   | HP Elite x2 1011 G1 Tablet       |
+
+  @TesteNegativo
+  Esquema do Cenario: 
+    E clico na categoria "<Categoria>"
+    Entao deve nao abrir a pagina da gategoria "<CategoriaErrada>"
+
+    Exemplos: 
+      | Categoria | CategoriaErrada |
+      | MICE      | TABLETS         |
+      | LAPTOPS   | HEADPHONES      |
