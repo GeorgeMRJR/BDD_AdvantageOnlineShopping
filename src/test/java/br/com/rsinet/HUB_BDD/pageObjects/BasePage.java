@@ -4,12 +4,15 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class BasePage {
-	protected WebDriver driver;
+
+	WebDriver driver;
 
 	public BasePage(WebDriver driver) {
-		this.driver = driver;
+		this.driver=driver;
+		PageFactory.initElements(driver, this);
 	}
 
 	@FindBy(xpath = "//span[@class='hi-user containMiniTitle ng-binding']")
@@ -45,7 +48,5 @@ public class BasePage {
 	public void Busca(String produto) {
 		campoBusca.sendKeys("" + produto + "" + Keys.ENTER);
 	}
-
-
 
 }

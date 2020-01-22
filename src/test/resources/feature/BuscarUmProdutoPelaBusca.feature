@@ -4,12 +4,13 @@ Funcionalidade: Buscar um produto
   
   O usuario buscara um produto pelo campo de busca
 
-  Contexto: 
-    Dado que estou no site advantage online shopping
-    E o usuario clicou no icone da lupa
-
+  #Contexto:
+  #Dado que estou no site advantage online shopping
+  #E o usuario clicou no icone da lupa
   @TestePositivo
   Esquema do Cenario: Buscar um produto pelo campo de busca
+    Dado que estou no site advantage online shopping
+    E o usuario clicou no icone da lupa
     E digitou no campo de busca "<Produto>" e preciona Enter
     Entao a pagina do resultado aparecera com o resultado da busca "<Produto>"
 
@@ -21,6 +22,8 @@ Funcionalidade: Buscar um produto
 
   @TesteNegativo
   Esquema do Cenario: Buscar um inesistente
+    Dado que estou no site advantage online shopping
+    E o usuario clicou no icone da lupa
     E digitou no campo de busca "<Produto>" e preciona Enter
     Entao aparecera uma pagina informando que o produto "<Produto>" nao foi encontrado
 

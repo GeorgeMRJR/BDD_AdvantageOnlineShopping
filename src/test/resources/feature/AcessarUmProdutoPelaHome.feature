@@ -3,11 +3,11 @@
 Funcionalidade: Abrir a pagina de um produto pela categoria na home
   estando na home page o usuario deve clicar em uma categoria e e selecionar um produdo
 
-  Contexto: 
-    Dado que estou no site advantage online shopping
-
+  #Contexto:
+  #Dado que estou no site advantage online shopping
   @TestePositivo
   Esquema do Cenario: 
+    Dado que estou no site advantage online shopping
     E clico na categoria "<Categoria>"
     Entao deve abrir a pagina da gategoria "<Categoria>"
     E clico no produto "<Produto>"
@@ -21,6 +21,7 @@ Funcionalidade: Abrir a pagina de um produto pela categoria na home
 
   @TesteNegativo
   Esquema do Cenario: 
+    Dado que estou no site advantage online shopping
     E clico na categoria "<Categoria>"
     Entao deve nao abrir a pagina da gategoria "<CategoriaErrada>"
 
