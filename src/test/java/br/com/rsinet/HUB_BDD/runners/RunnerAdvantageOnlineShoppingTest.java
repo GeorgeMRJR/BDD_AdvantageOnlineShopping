@@ -7,7 +7,7 @@ import cucumber.api.SnippetType;
 import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src/main/resources/feature",
+@CucumberOptions(features = "src/test/resources/feature",
 					glue = "br.com.rsinet.HUB_BDD.steps", 
 					tags = {
 							"@BuscarUmProdutoPelaHome, "
