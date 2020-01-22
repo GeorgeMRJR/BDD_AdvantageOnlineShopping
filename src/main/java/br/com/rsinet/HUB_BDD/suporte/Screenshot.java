@@ -8,13 +8,15 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
+import cucumber.api.Scenario;
+
 
 public class Screenshot {
 
-	public static void tirar(WebDriver navegador, String arquivo) {
-		File screenshot = ((TakesScreenshot)navegador).getScreenshotAs(OutputType.FILE);
+	public static void tirar(WebDriver driver, Scenario cenario) {
+		File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		try {
-			FileUtils.copyFile(screenshot, new File(arquivo));
+			FileUtils.copyFile(screenshot, new File("target/screenshot/"+Generator.dataHoraParaArquivo()+cenario.getId()+".jpg"));
 		} catch (Exception e) {
 			System.out.println("erro ao copiar arquivo para a pasta " + e.getMessage());
 		}

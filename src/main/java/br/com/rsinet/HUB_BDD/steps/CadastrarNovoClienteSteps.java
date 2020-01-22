@@ -9,7 +9,9 @@ import org.openqa.selenium.support.PageFactory;
 
 import br.com.rsinet.HUB_BDD.pageObjects.CadastroPage;
 import br.com.rsinet.HUB_BDD.pageObjects.HomePage;
+import br.com.rsinet.HUB_BDD.suporte.Screenshot;
 import br.com.rsinet.HUB_BDD.suporte.Web;
+import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.pt.Dado;
@@ -136,9 +138,9 @@ public class CadastrarNovoClienteSteps {
 		assertTrue(logado);
 	}
 
-	@After
-	public void tearDown() {
+	@After // cadastrar
+	public void tearDown(Scenario scenario) {
+		Screenshot.tirar(driver, scenario);
 		Web.fecharDriver();
 	}
-
 }

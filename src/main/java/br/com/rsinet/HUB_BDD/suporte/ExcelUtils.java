@@ -24,7 +24,7 @@ public class ExcelUtils {
 			// Open the Excel file
 
 			FileInputStream ExcelFile = new FileInputStream(
-					"src/main/resources/TDD_AdvantageOnlineShoppingData.xlsx");
+					"src/main/resources/BDD_AdvantageOnlineShoppingData.xlsx");
 
 			// Access the required test data sheet
 
@@ -81,7 +81,7 @@ public class ExcelUtils {
 			// Constant variables Test Data path and Test Data file name
 
 			FileOutputStream fileOut = new FileOutputStream(
-					"/TDD_AdvantageOnlineShopping/src/main/resources/TDD_AdvantageOnlineShoppingData.xlsx");
+					"/TDD_AdvantageOnlineShopping/src/main/resources/BDD_AdvantageOnlineShoppingData.xlsx");
 
 			ExcelWBook.write(fileOut);
 
