@@ -7,9 +7,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-public class CadastroPage  {
+public class CadastroPage extends BasePage {
 
 	public CadastroPage(WebDriver driver) {
+		super(driver);
 		PageFactory.initElements(driver, this);
 	}
 

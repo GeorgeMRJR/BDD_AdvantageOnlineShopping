@@ -5,43 +5,44 @@ import static org.junit.Assert.assertTrue;
 
 import org.openqa.selenium.WebDriver;
 
-import br.com.rsinet.HUB_BDD.pageObjects.BasePage;
+import br.com.rsinet.HUB_BDD.manager.DriverFactory;
+import br.com.rsinet.HUB_BDD.manager.PageObjectManager;
 import br.com.rsinet.HUB_BDD.pageObjects.CadastroPage;
 import br.com.rsinet.HUB_BDD.pageObjects.HomePage;
-import br.com.rsinet.HUB_BDD.pageObjects.manager.PageObjectManager;
-import br.com.rsinet.HUB_BDD.suporte.Web;
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.Entao;
 import cucumber.api.java.pt.Quando;
 
 public class CadastrarNovoClienteSteps {
 
-	private WebDriver driver;
-	private BasePage basePage;
-	private HomePage homePage;
-	private CadastroPage cadastroPage;
-	private PageObjectManager objectManager;
+	WebDriver driver;
+	HomePage homePage;
+	CadastroPage cadastroPage;
+	PageObjectManager objectManager;
+
+	public CadastrarNovoClienteSteps() {
+		driver = DriverFactory.getDriver();
+		objectManager = new PageObjectManager(driver);
+		homePage = objectManager.getHomePage();
+		cadastroPage = objectManager.getCadastroPage();
+	}
 
 	@Dado("^que estou no site advantage online shopping$")
 	public void queEstouNoSiteAdvantageOnlineShopping() {
-		driver = Web.inicializarDriver();
-		objectManager = new PageObjectManager(driver);
-		
-		basePage = objectManager.getBasePage();
-		assertTrue(basePage.urlAtual().contains("https://www.advantageonlineshopping.com/"));
-		//assertEquals("https://www.advantageonlineshopping.com/", basePage.urlAtual());
+		assertTrue(homePage.urlAtual().contains("https://www.advantageonlineshopping.com/"));
+		// assertEquals("https://www.advantageonlineshopping.com/",
+		// basePage.urlAtual());
 	}
 
 	@Dado("^nao estou logado$")
 	public void naoEstouLogado() {
-		boolean logado = basePage.logado();
+		boolean logado = homePage.logado();
 		assertFalse(logado);
 	}
 
 	@Quando("^clico no icone de usuario$")
 	public void clicoNoIconeDeUsuario() {
-		
-		homePage = objectManager.getHomePage();
+
 		homePage.clicarUsuario();
 	}
 
@@ -52,7 +53,6 @@ public class CadastrarNovoClienteSteps {
 
 	@Quando("^Digito o nome de usuario \"([^\"]*)\"$")
 	public void digitoONomeDeUsuario(String arg1) {
-		cadastroPage = objectManager.getCadastroPage();
 		cadastroPage.digitarUserName(arg1);
 	}
 
@@ -129,14 +129,13 @@ public class CadastrarNovoClienteSteps {
 
 	@Dado("^o cadastro nao sera realisado$")
 	public void oCadastroNaoSeraRealisado() {
-		assertTrue(basePage.urlAtual().contains("register"));
+		assertTrue(homePage.urlAtual().contains("register"));
 	}
 
 	@Entao("^o usuario estara cadastrado$")
 	public void oUsuarioEstaraCadastrado() {
-		boolean logado = basePage.logado();
+		boolean logado = homePage.logado();
 		assertTrue(logado);
-		Web.fecharDriver();
 	}
 
 }

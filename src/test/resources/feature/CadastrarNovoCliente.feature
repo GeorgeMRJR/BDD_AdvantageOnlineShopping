@@ -4,17 +4,13 @@ Funcionalidade: Cadastro de novo usuario
   
   Usuario deve fazer um cadastro
 
-  #Contexto:
-  #Dado que estou no site advantage online shopping
-  #E nao estou logado
-  #Quando clico no icone de usuario
-  #E clico no link de criar nova conta
+  Contexto:
+  Dado que estou no site advantage online shopping
+  E nao estou logado
+  Quando clico no icone de usuario
+  E clico no link de criar nova conta
   @TestePositivo
   Esquema do Cenario: Deve preencher todos os campos e efetuar cadastro com sucesso
-    Dado que estou no site advantage online shopping
-    E nao estou logado
-    Quando clico no icone de usuario
-    E clico no link de criar nova conta
     E Digito o nome de usuario "<NomeDeUsuario>"
     E Digito a senha "<Senha>"
     E Digito a comfirmacao da senha "<ComfirmaSenha>"
@@ -34,15 +30,11 @@ Funcionalidade: Cadastro de novo usuario
 
     Exemplos: Deve preencher todos os campos e efetuar cadastro com sucesso
       | NomeDeUsuario | Senha   | ComfirmaSenha | Email           | Nome   | SobreNome | Telefone  | Continente | Cidade   | Estado | Endereco | Cep      |
-      | George30      | Abc123  | Abc123        | george@test.com | George | Luiz      | 989999899 | Brazil     | Sorocaba | SP     | Av.Gal   | 18060501 |
-      | Joao30        | Abc1236 | Abc1236       | joao@test.com   | joao   | da silva  | 898777877 | Japan      | Tokyo    | Tokyo  | Av.Meiji | 18060501 |
+      | George35      | Abc123  | Abc123        | george@test.com | George | Luiz      | 989999899 | Brazil     | Sorocaba | SP     | Av.Gal   | 18060501 |
+      | Joao35        | Abc1236 | Abc1236       | joao@test.com   | joao   | da silva  | 898777877 | Japan      | Tokyo    | Tokyo  | Av.Meiji | 18060501 |
 
   @TesteNegativo
   Esquema do Cenario: Nao deve efetuar cadastro de usuario existente
-    Dado que estou no site advantage online shopping
-    E nao estou logado
-    Quando clico no icone de usuario
-    E clico no link de criar nova conta
     E Digito o nome de usuario "<NomeDeUsuario>"
     E Digito a senha "<Senha>"
     E Digito a comfirmacao da senha "<ComfirmaSenha>"

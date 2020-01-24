@@ -5,9 +5,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class ProdutoPage {
+public class ProdutoPage extends BasePage{
 
 	public ProdutoPage(WebDriver driver) {
+		super(driver);
 		PageFactory.initElements(driver, this);
 	}
 

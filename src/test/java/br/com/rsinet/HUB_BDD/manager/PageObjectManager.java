@@ -1,4 +1,4 @@
-package br.com.rsinet.HUB_BDD.pageObjects.manager;
+package br.com.rsinet.HUB_BDD.manager;
 
 import org.openqa.selenium.WebDriver;
 

@@ -6,10 +6,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
-public class CategoriaProdutoPage {
+public class CategoriaProdutoPage extends BasePage {
 	WebDriver driver;
 
 	public CategoriaProdutoPage(WebDriver driver) {
+		super(driver);
 		this.driver=driver;
 		PageFactory.initElements(driver, this);
 	}

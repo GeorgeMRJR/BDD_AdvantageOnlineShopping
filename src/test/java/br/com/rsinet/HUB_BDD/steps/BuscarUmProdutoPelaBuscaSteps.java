@@ -4,47 +4,40 @@ import static org.junit.Assert.assertEquals;
 
 import org.openqa.selenium.WebDriver;
 
-import br.com.rsinet.HUB_BDD.pageObjects.BasePage;
+import br.com.rsinet.HUB_BDD.manager.DriverFactory;
+import br.com.rsinet.HUB_BDD.manager.PageObjectManager;
+import br.com.rsinet.HUB_BDD.pageObjects.HomePage;
 import br.com.rsinet.HUB_BDD.pageObjects.ResultadoDaBuscaPage;
-import br.com.rsinet.HUB_BDD.pageObjects.manager.PageObjectManager;
-import br.com.rsinet.HUB_BDD.suporte.Web;
-import cucumber.api.java.Before;
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.Entao;
 
 public class BuscarUmProdutoPelaBuscaSteps {
 
-	private BasePage basePage;
 	private ResultadoDaBuscaPage resultadoDaBuscaPage;
 	private WebDriver driver;
 	private PageObjectManager objectManager;
-//
-//	@After
-//	public void setUp() {
-//		driver = Web.inicializarDriver();
-//	}
+	private HomePage homePage;
 
-	@Before
-	public void tearDown() {
-		Web.fecharDriver();
+	public BuscarUmProdutoPelaBuscaSteps() {
+		driver = DriverFactory.getDriver();
+		objectManager = new PageObjectManager(driver);
+		homePage = objectManager.getHomePage();
+		resultadoDaBuscaPage = objectManager.getResultadoDaBuscaPage();
+
 	}
 
 	@Dado("^o usuario clicou no icone da lupa$")
 	public void o_usuario_clicou_no_icone_da_lupa() {
-		driver = Web.inicializarDriver();
-		objectManager = new PageObjectManager(driver);
-		basePage = objectManager.getBasePage();
-		basePage.clicarLupa();
+		homePage.clicarLupa();
 	}
 
 	@Dado("^digitou no campo de busca \"([^\"]*)\" e preciona Enter$")
 	public void digitou_no_campo_de_busca_e_preciona_Enter(String arg1) {
-		basePage.Busca(arg1);
+		homePage.Busca(arg1);
 	}
 
 	@Entao("^a pagina do resultado aparecera com o resultado da busca \"([^\"]*)\"$")
 	public void aPaginaDoResultadoApareceraComOResultadoDaBusca(String arg1) {
-		resultadoDaBuscaPage = objectManager.getResultadoDaBuscaPage();
 		String encontrou = resultadoDaBuscaPage.encontrou();
 		assertEquals(arg1.toLowerCase(), encontrou.toLowerCase());
 	}
@@ -54,7 +47,6 @@ public class BuscarUmProdutoPelaBuscaSteps {
 		String atual = resultadoDaBuscaPage.rerultadoBuscaNegativa();
 		String esperado = "No results for \"" + arg1 + "\"";
 		assertEquals(esperado.toLowerCase(), atual.toLowerCase());
-		Web.fecharDriver();
 	}
 
 }
