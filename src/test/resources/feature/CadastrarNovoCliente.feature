@@ -10,7 +10,7 @@ Funcionalidade: Cadastro de novo usuario
   Quando clico no icone de usuario
   E clico no link de criar nova conta
   @TestePositivo
-  Esquema do Cenario: Deve preencher todos os campos e efetuar cadastro com sucesso
+  Esquema do Cenario: cadastro positivo
     E Digito o nome de usuario "<NomeDeUsuario>"
     E Digito a senha "<Senha>"
     E Digito a comfirmacao da senha "<ComfirmaSenha>"
@@ -30,11 +30,11 @@ Funcionalidade: Cadastro de novo usuario
 
     Exemplos: Deve preencher todos os campos e efetuar cadastro com sucesso
       | NomeDeUsuario | Senha   | ComfirmaSenha | Email           | Nome   | SobreNome | Telefone  | Continente | Cidade   | Estado | Endereco | Cep      |
-      | George35      | Abc123  | Abc123        | george@test.com | George | Luiz      | 989999899 | Brazil     | Sorocaba | SP     | Av.Gal   | 18060501 |
-      | Joao35        | Abc1236 | Abc1236       | joao@test.com   | joao   | da silva  | 898777877 | Japan      | Tokyo    | Tokyo  | Av.Meiji | 18060501 |
+      | George39      | Abc123  | Abc123        | george@test.com | George | Luiz      | 989999899 | Brazil     | Sorocaba | SP     | Av.Gal   | 18060501 |
+      | Joao39        | Abc1236 | Abc1236       | joao@test.com   | joao   | da silva  | 898777877 | Japan      | Tokyo    | Tokyo  | Av.Meiji | 18060501 |
 
   @TesteNegativo
-  Esquema do Cenario: Nao deve efetuar cadastro de usuario existente
+  Esquema do Cenario: cadastro negativo
     E Digito o nome de usuario "<NomeDeUsuario>"
     E Digito a senha "<Senha>"
     E Digito a comfirmacao da senha "<ComfirmaSenha>"

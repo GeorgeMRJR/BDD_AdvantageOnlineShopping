@@ -6,7 +6,7 @@ Funcionalidade: Abrir a pagina de um produto pela categoria na home
   Contexto:
   Dado que estou no site advantage online shopping
   @TestePositivo
-  Esquema do Cenario: 
+  Esquema do Cenario: produto pela home positivo
     E clico na categoria "<Categoria>"
     Entao deve abrir a pagina da gategoria "<Categoria>"
     E clico no produto "<Produto>"
@@ -19,7 +19,7 @@ Funcionalidade: Abrir a pagina de um produto pela categoria na home
       | TABLETS   | HP Elite x2 1011 G1 Tablet       |
 
   @TesteNegativo
-  Esquema do Cenario: 
+  Esquema do Cenario: produto pela home negativo
     E clico na categoria "<Categoria>"
     Entao deve nao abrir a pagina da gategoria "<CategoriaErrada>"
 
