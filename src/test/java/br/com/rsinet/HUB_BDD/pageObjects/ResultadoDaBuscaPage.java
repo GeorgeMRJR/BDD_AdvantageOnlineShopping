@@ -31,10 +31,6 @@ public class ResultadoDaBuscaPage extends BasePage {
 	}
 
 	public void clickNoProduto() {
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-		}
 		resultadoClicavel.sendKeys(Keys.ENTER);
 	}
 

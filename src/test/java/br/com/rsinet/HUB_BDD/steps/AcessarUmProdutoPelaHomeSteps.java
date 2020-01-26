@@ -33,8 +33,8 @@ public class AcessarUmProdutoPelaHomeSteps {
 
 	@Dado("^clico na categoria \"([^\"]*)\"$")
 	public void clicoNaCategoria(String arg1) {
-
 		homePage.clicarCategoria(arg1);
+		homePage.waitJS();
 	}
 
 	@Entao("^deve abrir a pagina da gategoria \"([^\"]*)\"$")
@@ -58,6 +58,7 @@ public class AcessarUmProdutoPelaHomeSteps {
 
 	@Entao("^deve nao abrir a pagina da gategoria \"([^\"]*)\"$")
 	public void deveNaoAbrirAPaginaDaGategoria(String arg1) {
+		produtoPage.waitJS();
 		String url = produtoPage.urlAtual().toLowerCase();
 		assertFalse(url.contains(arg1.toLowerCase()));
 	}

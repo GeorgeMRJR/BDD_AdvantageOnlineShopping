@@ -23,7 +23,7 @@ import cucumber.api.junit.Cucumber;
 							},
 					plugin = { "pretty", 
 								//"html:target/report-html",
-								"com.cucumber.listener.ExtentCucumberFormatter:report/report_BDD_AdvantageOnlineShopping.html"
+								"com.cucumber.listener.ExtentCucumberFormatter:target/report/report_BDD_AdvantageOnlineShopping.html"
 							}, 
 					monochrome = true, 
 					snippets = SnippetType.CAMELCASE, 

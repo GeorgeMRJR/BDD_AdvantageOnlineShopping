@@ -14,6 +14,7 @@ public class DriverFactory {
 	}
 
 	private static WebDriver criarDriver() {
+		System.setProperty("webdriver.chrome.driver", "C:/driverWebDriver/chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("https://www.advantageonlineshopping.com/");

@@ -3,8 +3,9 @@
 Funcionalidade: Abrir a pagina de um produto pela categoria na home
   estando na home page o usuario deve clicar em uma categoria e e selecionar um produdo
 
-  Contexto:
-  Dado que estou no site advantage online shopping
+  Contexto: 
+    Dado que estou no site advantage online shopping
+
   @TestePositivo
   Esquema do Cenario: produto pela home positivo
     E clico na categoria "<Categoria>"

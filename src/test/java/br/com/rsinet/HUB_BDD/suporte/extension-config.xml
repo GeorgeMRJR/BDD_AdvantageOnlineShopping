@@ -14,7 +14,7 @@
     <documentTitle>BDD_AdvantageOnlineShopping - Cucumber Framework</documentTitle>
     
     <!-- report name - displayed at top-nav -->
-    <reportName>BDD_AdvantageOnlineShopping - Cucumber Report</reportName>
+    <reportName>Relatorio - AdvantageOnlineShopping</reportName>
     
     <!-- global date format override -->  <!-- defaults to yyyy-MM-dd -->
     <dateFormat>dd-MM-yyyy</dateFormat>

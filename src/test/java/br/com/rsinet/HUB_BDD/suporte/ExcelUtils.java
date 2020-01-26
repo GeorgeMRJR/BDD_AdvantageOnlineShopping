@@ -14,19 +14,12 @@ public class ExcelUtils {
 	private static XSSFCell Cell;
 	private static XSSFRow Row;
 
-	// This method is to set the File path and to open the Excel file, Pass Excel
-	// Path and Sheetname as Arguments to this method
-
 	public static void setExcelFile(String SheetName) throws Exception {
 
 		try {
 
-			// Open the Excel file
-
 			FileInputStream ExcelFile = new FileInputStream(
-					"src/main/resources/BDD_AdvantageOnlineShoppingData.xlsx");
-
-			// Access the required test data sheet
+					"src/test/resources/dataBase/BDD_AdvantageOnlineShoppingData.xlsx");
 
 			ExcelWBook = new XSSFWorkbook(ExcelFile);
 			ExcelWSheet = ExcelWBook.getSheet(SheetName);
@@ -36,9 +29,6 @@ public class ExcelUtils {
 			throw (e);
 		}
 	}
-
-	// This method is to read the test data from the Excel cell, in this we are
-	// passing parameters as Row num and Col num
 
 	public static String getCellData(int RowNum, int ColNum) throws Exception {
 
@@ -57,15 +47,12 @@ public class ExcelUtils {
 
 	}
 
-	// This method is to write in the Excel cell, Row num and Col num are the
-	// parameters
-
 	public static void setCellData(String Result, int RowNum, int ColNum) throws Exception {
 
 		try {
 
 			Row = ExcelWSheet.getRow(RowNum);
-			//Cell = Row.getCell(ColNum, Row.);
+			// Cell = Row.getCell(ColNum, Row.);
 
 			if (Cell == null) {
 
@@ -77,8 +64,6 @@ public class ExcelUtils {
 				Cell.setCellValue(Result);
 
 			}
-
-			// Constant variables Test Data path and Test Data file name
 
 			FileOutputStream fileOut = new FileOutputStream(
 					"/TDD_AdvantageOnlineShopping/src/main/resources/BDD_AdvantageOnlineShoppingData.xlsx");

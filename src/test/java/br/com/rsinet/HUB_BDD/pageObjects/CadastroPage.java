@@ -1,5 +1,6 @@
 package br.com.rsinet.HUB_BDD.pageObjects;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,10 +9,13 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 public class CadastroPage extends BasePage {
+	private WebDriver driver;
+	private JavascriptExecutor js;
 
 	public CadastroPage(WebDriver driver) {
 		super(driver);
 		PageFactory.initElements(driver, this);
+		this.driver = driver;
 	}
 
 	@FindBy(name = "usernameRegisterPage")
@@ -117,27 +121,6 @@ public class CadastroPage extends BasePage {
 		checkBox.sendKeys(Keys.SPACE);
 	}
 
-	public String textoDoErro() throws InterruptedException {
-		Thread.sleep(1000);
-		String erroBotao = mensagemDeErro.getText();
-		String erroEmail = lblErroEmail.getText();
-		String erroSenha = lblErroSenha.getText();
-		if (erroBotao.length() > 5)
-			return erroBotao;
-		if (erroBotao.length() > 5)
-			return erroEmail;
-		return erroSenha;
-	}
-
-	public String textoDoErroEmail() throws InterruptedException {
-		Thread.sleep(1000);
-		return lblErroEmail.getText();
-	}
-
-	public String textoDoErroSenha() throws InterruptedException {
-		Thread.sleep(1000);
-		return lblErroSenha.getText();
-	}
 
 	public boolean RegistrarAbilitado() {
 		return btnRegistrar.isEnabled();
@@ -148,6 +131,40 @@ public class CadastroPage extends BasePage {
 			btnRegistrar.sendKeys(Keys.ENTER);
 		} catch (Exception e) {
 		}
+	}
+	public void rolar(int qtd) {
+		js = (JavascriptExecutor) driver;
+		js.executeScript("javascript:window.scrollBy(0," + qtd + ")");
+	}
+	
+
+	public void PreencherOsDados(
+			String nomeUsuario,
+			String senha,
+			String reSenha,
+			String email,
+			String primeiroNome,
+			String segundoNome,
+			String telefone,
+			String continente,
+			String cidade,
+			String estado,
+			String endereco,
+			String codPostal
+			) {
+
+		digitarUserName(nomeUsuario);
+		digitarPassword(senha);
+		digitarNovamenteSenha(reSenha);
+		digitarEmail(email);
+		digitarPrimeiroNome(primeiroNome);
+		DigitarSobreNome(segundoNome);
+		DigitarTelefone(telefone);
+		EscolherContinente(continente);
+		escreverCidade(cidade);
+		DigitarEstado(estado);
+		digitarEndereco(endereco);
+		DigitarCodigoPostal(codPostal);
 	}
 
 }

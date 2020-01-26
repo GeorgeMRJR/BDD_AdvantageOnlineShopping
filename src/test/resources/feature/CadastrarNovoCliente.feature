@@ -30,21 +30,14 @@ Funcionalidade: Cadastro de novo usuario
 
     Exemplos: Deve preencher todos os campos e efetuar cadastro com sucesso
       | NomeDeUsuario | Senha   | ComfirmaSenha | Email           | Nome   | SobreNome | Telefone  | Continente | Cidade   | Estado | Endereco | Cep      |
-      | George39      | Abc123  | Abc123        | george@test.com | George | Luiz      | 989999899 | Brazil     | Sorocaba | SP     | Av.Gal   | 18060501 |
-      | Joao39        | Abc1236 | Abc1236       | joao@test.com   | joao   | da silva  | 898777877 | Japan      | Tokyo    | Tokyo  | Av.Meiji | 18060501 |
+      | George46      | Abc123  | Abc123        | george@test.com | George | Luiz      | 989999899 | Brazil     | Sorocaba | SP     | Av.Gal   | 18060501 |
+      | Joao46        | Abc1236 | Abc1236       | joao@test.com   | joao   | da silva  | 898777877 | Japan      | Tokyo    | Tokyo  | Av.Meiji | 18060501 |
 
   @TesteNegativo
-  Esquema do Cenario: cadastro negativo
-    E Digito o nome de usuario "<NomeDeUsuario>"
-    E Digito a senha "<Senha>"
-    E Digito a comfirmacao da senha "<ComfirmaSenha>"
-    E Digito o email "<Email>"
+   Cenario: cadastro negativo
+    Quando Digito os dados invalidos para cadastro
     E clico em aceito os termos de uso
     E clico no botao de registro
     Entao o cadastro nao sera realisado
 
-    Exemplos: Nao deve efetuar cadastro de usuario existente
-      | NomeDeUsuario | Senha  | ComfirmaSenha | Email           |
-      | George1234    | Abc123 | Abc123        | george@test.com |
-      | George1234    | Abc123 | Abc123        | g               |
 

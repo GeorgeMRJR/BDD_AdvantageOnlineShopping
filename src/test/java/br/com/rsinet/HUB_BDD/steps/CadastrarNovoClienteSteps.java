@@ -9,6 +9,8 @@ import br.com.rsinet.HUB_BDD.manager.DriverFactory;
 import br.com.rsinet.HUB_BDD.manager.PageObjectManager;
 import br.com.rsinet.HUB_BDD.pageObjects.CadastroPage;
 import br.com.rsinet.HUB_BDD.pageObjects.HomePage;
+import br.com.rsinet.HUB_BDD.suporte.ExcelConsumer;
+import br.com.rsinet.HUB_BDD.suporte.ExcelUtils;
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.Entao;
 import cucumber.api.java.pt.Quando;
@@ -30,8 +32,6 @@ public class CadastrarNovoClienteSteps {
 	@Dado("^que estou no site advantage online shopping$")
 	public void queEstouNoSiteAdvantageOnlineShopping() {
 		assertTrue(homePage.urlAtual().contains("https://www.advantageonlineshopping.com/"));
-		// assertEquals("https://www.advantageonlineshopping.com/",
-		// basePage.urlAtual());
 	}
 
 	@Dado("^nao estou logado$")
@@ -115,6 +115,26 @@ public class CadastrarNovoClienteSteps {
 	public void clicoEmAceitoOsTermosDeUso() {
 		cadastroPage.ClicarCbxAceitoTermos();
 	}
+	@Quando("^Digito os dados invalidos para cadastro$")
+	public void digitoOsDadosInvalidosParaCadastro() throws Throwable {
+		ExcelConsumer exc = new ExcelConsumer();
+		ExcelUtils.setExcelFile("CadastrarNovoCliente_Ne");
+		int row = 1;
+		cadastroPage.PreencherOsDados(
+				exc.getNomeUsuario(row),
+				exc.getSenha(row),
+				exc.getReSenha(row),
+				exc.getEmail(row),
+				exc.getPrimeiroNome(row),
+				exc.getSegundoNome(row),
+				exc.getTelefone(row),
+				exc.getContinente(row),
+				exc.getCidade(row),
+				exc.getEstado(row),
+				exc.getEndereco(row),
+				exc.getCodPostal(row));
+	}
+
 
 	@Entao("^o botao de registrar deve estar abilitado$")
 	public void oBotaoDeRegistrarDeveEstarAbilitado() {
@@ -127,8 +147,9 @@ public class CadastrarNovoClienteSteps {
 		cadastroPage.ClicarEmRegistrar();
 	}
 
-	@Dado("^o cadastro nao sera realisado$")
+	@Entao("^o cadastro nao sera realisado$")
 	public void oCadastroNaoSeraRealisado() {
+		cadastroPage.inicio();
 		assertTrue(homePage.urlAtual().contains("register"));
 	}
 

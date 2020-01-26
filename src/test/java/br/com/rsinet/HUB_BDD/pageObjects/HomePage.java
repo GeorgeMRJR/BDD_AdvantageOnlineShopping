@@ -1,6 +1,5 @@
 package br.com.rsinet.HUB_BDD.pageObjects;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -55,23 +54,24 @@ public class HomePage extends BasePage {
 	}
 
 	public void clicarCategoria(String Categoria) {
-		JavascriptExecutor executor = (JavascriptExecutor) driver;
 		switch (Categoria) {
 		case "LAPTOPS":
-			executor.executeScript("arguments[0].click();", categoriaLaptops);
+			categoriaLaptops.click();
 			break;
 		case "MICE":
-			executor.executeScript("arguments[0].click();", categoriaMice);
+			categoriaMice.click();
 			break;
 		case "HEADPHONES":
-			executor.executeScript("arguments[0].click();", categoriaHeadphones);
+			categoriaHeadphones.click();
 			break;
 		case "SPEAKERS":
-			executor.executeScript("arguments[0].click();", categoriaSpeakers);
+			categoriaSpeakers.click();
 			break;
 		case "TABLETS":
-			executor.executeScript("arguments[0].click();", categoriaTablets);
+			categoriaTablets.click();
+			System.out.println("categoria tablet");
 		default:
+			System.out.println("categoria nao encontrada");
 			break;
 		}
 	}

@@ -1,18 +1,19 @@
 package br.com.rsinet.HUB_BDD.pageObjects;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 public class BasePage {
 
-	WebDriver driver;
+	private WebDriver driver;
+	private JavascriptExecutor js;
 
 	public BasePage(WebDriver driver) {
-		this.driver=driver;
-		PageFactory.initElements(driver, this);
+		this.driver = driver;
 	}
 
 	@FindBy(xpath = "//span[@class='hi-user containMiniTitle ng-binding']")
@@ -47,6 +48,15 @@ public class BasePage {
 
 	public void Busca(String produto) {
 		campoBusca.sendKeys("" + produto + "" + Keys.ENTER);
+	}
+
+	public void inicio() {
+		Actions actions = new Actions(driver);
+		actions.sendKeys(Keys.HOME).perform();
+	}
+	public void waitJS() {
+		js = (JavascriptExecutor) driver;
+		js.executeAsyncScript("window.setTimeout(arguments[arguments.length - 1], 1000);");
 	}
 
 }
