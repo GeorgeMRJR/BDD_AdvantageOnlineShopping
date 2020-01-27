@@ -1,5 +1,6 @@
 package br.com.rsinet.HUB_BDD.steps;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 import br.com.rsinet.HUB_BDD.manager.DriverFactory;
@@ -13,6 +14,8 @@ public class Hooks {
 	@After(order = 1)
 	public void afterScenario(Scenario scenario) {
 		driver = DriverFactory.getDriver();
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeAsyncScript("window.setTimeout(arguments[arguments.length - 1], 1000);");
 		Screenshot screenshot = new Screenshot();
 		screenshot.gerarScreenShot(driver, scenario);
 	}

@@ -1,6 +1,5 @@
 package br.com.rsinet.HUB_BDD.pageObjects;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,7 +9,6 @@ import org.openqa.selenium.support.FindBy;
 public class BasePage {
 
 	private WebDriver driver;
-	private JavascriptExecutor js;
 
 	public BasePage(WebDriver driver) {
 		this.driver = driver;
@@ -53,10 +51,6 @@ public class BasePage {
 	public void inicio() {
 		Actions actions = new Actions(driver);
 		actions.sendKeys(Keys.HOME).perform();
-	}
-	public void waitJS() {
-		js = (JavascriptExecutor) driver;
-		js.executeAsyncScript("window.setTimeout(arguments[arguments.length - 1], 1000);");
 	}
 
 }

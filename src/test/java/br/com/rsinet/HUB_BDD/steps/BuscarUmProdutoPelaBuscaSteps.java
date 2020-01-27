@@ -38,14 +38,12 @@ public class BuscarUmProdutoPelaBuscaSteps {
 
 	@Entao("^a pagina do resultado aparecera com o resultado da busca \"([^\"]*)\"$")
 	public void aPaginaDoResultadoApareceraComOResultadoDaBusca(String arg1) {
-		resultadoDaBuscaPage.waitJS();
 		String encontrou = resultadoDaBuscaPage.encontrou();
 		assertEquals(arg1.toLowerCase(), encontrou.toLowerCase());
 	}
 
 	@Entao("^aparecera uma pagina informando que o produto \"([^\"]*)\" nao foi encontrado$")
 	public void apareceraUmaPaginaInformandoQueOProdutoNaoFoiEncontrado(String arg1) {
-		resultadoDaBuscaPage.waitJS();
 		String atual = resultadoDaBuscaPage.rerultadoBuscaNegativa();
 		String esperado = "No results for \"" + arg1 + "\"";
 		assertEquals(esperado.toLowerCase(), atual.toLowerCase());

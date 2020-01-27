@@ -26,5 +26,5 @@ Funcionalidade: Buscar um produto
     Exemplos: Buscar um inesistente
       | Produto |
       | iphone  |
-      | Sansung |
+      | Samsung |
       | Xiaomi  |
